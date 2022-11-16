@@ -1,5 +1,14 @@
 import requests
 
+letters_list = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ']
+arg_error = 'Please enter only latin letters and spacebar'
+while True:
+    try:
+        req = str(input('looking for...'))
+    except:
+        print(arg_error)
+        continue
+
 user_headers = {
     'User-Agent': 'PostmanRuntime/7.29.2',
     'Accept': '*/*',
@@ -11,7 +20,7 @@ user_headers = {
 }
 
 u1 = 'https://musicstax.com/'
-u2 = 'https://musicstax.com/search?q=money'
+u2 = 'https://musicstax.com/search?q=' + req
 
 s = requests.get(u2)
 
