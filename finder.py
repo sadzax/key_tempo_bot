@@ -71,5 +71,7 @@ def main(message):
     if message.text == 'testme':
         bot.reply_to(message, f'<b>Your Technical Data:</b>\n\n{message}', parse_mode='html')
     else:
-        req = message.text
-        bot.reply_to(message, finder(req))
+        find_this = message.text
+        bot.reply_to(message, finder(find_this))
+
+bot.polling(none_stop=True)
