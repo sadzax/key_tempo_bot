@@ -1,13 +1,6 @@
 import requests
 
-letters_list = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ']
-arg_error = 'Please enter only latin letters and spacebar'
-while True:
-    try:
-        req = str(input('looking for...'))
-    except:
-        print(arg_error)
-        continue
+req = str(input('looking for...')).replace(' ','+').lower()
 
 user_headers = {
     'User-Agent': 'PostmanRuntime/7.29.2',
@@ -19,9 +12,39 @@ user_headers = {
     'Sec-Fetch-Site': 'same-origin'
 }
 
-u1 = 'https://musicstax.com/'
-u2 = 'https://musicstax.com/search?q=' + req
+url_req = 'https://musicstax.com/search?q=' + req
 
-s = requests.get(u2)
+session = requests.session()
 
-print(s)
+response = session.get(url_req).text.splitlines() 
+
+i = 0
+while i < len(response):
+    if response[i].startswith('<a data-cy="song-image" class="song-image search-image" href="/') is True:
+        song_url = str(response[i])
+        break
+    else:
+        i += 1
+
+song_url = song_url[62:]
+song_url = song_url[:(len(song_url)-2)]
+song_url = 'https://musicstax.com' + song_url
+
+song_response = session.get(song_url).text.splitlines()
+
+j = 0
+while j < len(song_response):
+    if song_response[j].startswith('<div class="song-meta-title">'):
+        info = song_response[j+3]
+        break
+    else:
+        j += 1
+
+key = (info[info.find('data-cy="meta-Key-value">')+25:info.find('data-cy="meta-Key-value">')+25+5])
+tempo = (info[info.find('data-cy="meta-Tempo-value">')+27:info.find('data-cy="meta-Tempo-value">')+27+3])
+if tempo[2:] == "<":
+    tempo = tempo[:2]
+else: 
+    tempo = tempo
+
+print(f"The Song is probably in \n {key} \n\n Tempo \n {tempo} BPM")
