@@ -61,7 +61,7 @@ def start(message):
     bot_resopnse_on_start = f'<b>Hello, {message.from_user.first_name}</b>\n\n' \
                             f' This bot will show you the Key and the Tempo of almost any song \n' \
                             f" Just send me the name of the song and (preferably) it's perfomer \n\n\n\n" \
-                            f'<b>Привет, , {message.from_user.first_name}</b>\n\n' \
+                            f'<b>Привет, {message.from_user.first_name}</b>\n\n' \
                             f' Я умею искать тональность и темп почти любой (зарубежной) песни \n' \
                             f' Просто отправь мне её название и (очень желательно) исполнителя '
     bot.send_message(message.chat.id, bot_resopnse_on_start, parse_mode='html')
