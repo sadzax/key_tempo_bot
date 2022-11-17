@@ -67,7 +67,7 @@ def finder(req):
                 f'by <b>{artist_name}</b>\n'\
                 f'from the album "{album_name}" released on {release_date}\n\n'\
                 f'-- -- -- -- -- -- -- -- --\n\n'\
-                f'The song is probably in \n <u><b>{key}</b></u> \n\nTempo:\n <u><b>{tempo}</b></u> BPM'
+                f'The song is probably in \n <b>{key}</b> \n\nTempo:\n <b>{tempo}</b> BPM'
         return answer
     except:
         answer = f"Sorry, I didn't find any song. Please specify your request"
