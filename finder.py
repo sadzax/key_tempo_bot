@@ -58,11 +58,11 @@ def finder(req):
     album_name = trimmer(info,'data-cy="meta-Album-value"><','<u>','</u>')
     release_date = trimmer(info,'data-cy="meta-Release+Date-value">',None,'</div>')
 
-    answer = (f"I guess you mean <b>{song_name}</b> \n \
-                by <b>{artist_name}</b> \n \
-                from the album {album_name} released {release_date} \n\n \
-                -- -- -- -- -- -- -- -- -- \n\n \
-                Song is probably in \n <b>{key}</b> \n\n Tempo \n <b>{tempo}</b> BPM")
+    answer = f'I guess you mean <b>{song_name}</b> \n '\
+            f'by <b>{artist_name}</b> \n '\
+            f'from the album {album_name} released {release_date} \n\n '\
+            f'-- -- -- -- -- -- -- -- -- \n\n '\
+            f'Song is probably in \n <b>{key}</b> \n\n Tempo \n <b>{tempo}</b> BPM")'
     return answer
 
 tokenTG = io.open('token.txt', mode="r", encoding='utf-8').read()
