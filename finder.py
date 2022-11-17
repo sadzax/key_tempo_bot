@@ -58,11 +58,11 @@ def finder(req):
     album_name = trimmer(info,'data-cy="meta-Album-value"><','<u>','</u>')
     release_date = trimmer(info,'data-cy="meta-Release+Date-value">',None,'</div>')
 
-    answer = f'I guess you mean <b>"{song_name}</b>"\n'\
+    answer = (f'I guess you mean <b>"{song_name}</b>"\n'\
             f'by <b>{artist_name}</b>\n'\
             f'from the album "{album_name}" released on {release_date}\n\n'\
             f'-- -- -- -- -- -- -- -- --\n\n'\
-            f'The song is probably in \n <u><b>{key}<b></u> \n\nTempo:\n <u><b>{tempo}</b></u> BPM'
+            f'The song is probably in \n <u><b>{key}<b></u> \n\nTempo:\n <u><b>{tempo}</b></u> BPM')
     return answer
 
 
@@ -88,7 +88,6 @@ def main(message):
     elif message.text.lower() in three_hundred_list:
         bot.reply_to(message, f'<b>ОТСОСИ У ТРАКТОРИСТА АХАХХААХХАХА))))))</b>\n', parse_mode='html')
     else:
-        find_this = message.text
-        bot.reply_to(message, finder(find_this), parse_mode='html')
+        bot.reply_to(message, finder(message.text))
 
 bot.polling(none_stop=True)
