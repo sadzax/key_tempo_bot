@@ -97,6 +97,6 @@ def main(message):
     elif message.text.lower() in three_hundred_list:
         bot.reply_to(message, f'<b>ОТСОСИ У ТРАКТОРИСТА АХАХХААХХАХА))))))</b>\n', parse_mode='html')
     else:
-        bot.reply_to(message, finder(message.text))
+        bot.reply_to(message, finder(message.text), parse_mode='html')
 
 bot.polling(none_stop=True)
