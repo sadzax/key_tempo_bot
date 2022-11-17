@@ -52,17 +52,17 @@ def finder(req):
         return dump
 
     key = trimmer(info,'data-cy="meta-Key-value">',None,'</div>')
-    tempo = trimmer(info,'data-cy="meta-Tempo-label">',None,'</div>')
+    tempo = trimmer(info,'data-cy="meta-Tempo-value">',None,'</div>')
     song_name = trimmer(info,'data-cy="meta-Name-value">',None,'</div>')
     artist_name = trimmer(info,'data-cy="meta-Artist(s)-value"><','<u>','</u>')
     album_name = trimmer(info,'data-cy="meta-Album-value"><','<u>','</u>')
     release_date = trimmer(info,'data-cy="meta-Release+Date-value">',None,'</div>')
 
-    answer = f'I guess you mean <b>{song_name}</b> \n '\
-            f'by <b>{artist_name}</b> \n '\
-            f'from the album {album_name} released {release_date} \n\n '\
-            f'-- -- -- -- -- -- -- -- -- \n\n '\
-            f'Song is probably in \n <b>{key}</b> \n\n Tempo \n <b>{tempo}</b> BPM")'
+    answer = f'I guess you mean {song_name} \n'\
+            f'by {artist_name} \n'\
+            f'from the album {album_name} released {release_date} \n\n'\
+            f'-- -- -- -- -- -- -- -- -- \n\n'\
+            f'Song is probably in \n {key} \n\n Tempo \n {tempo} BPM")'
     return answer
 
 tokenTG = io.open('token.txt', mode="r", encoding='utf-8').read()
