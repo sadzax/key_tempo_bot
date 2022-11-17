@@ -59,7 +59,7 @@ def finder(req):
     release_date = trimmer(info,'data-cy="meta-Release+Date-value">',None,'</div>')
 
     answer = f'I guess you mean "{song_name}"\n'\
-            f'by **{artist_name}** \n'\
+            f'by {artist_name}\n'\
             f'from the album "{album_name}" released on {release_date}\n\n'\
             f'-- -- -- -- -- -- -- -- --\n\n'\
             f'The song is probably in \n {key} \n\nTempo:\n {tempo} BPM'
