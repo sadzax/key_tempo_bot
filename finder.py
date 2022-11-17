@@ -81,7 +81,7 @@ bot = telebot.TeleBot(tokenTG)
 
 @bot.message_handler(commands=['start', 'help'])
 def start(message):
-    bot_resopnse_on_start = f'<b>Hello, {message.from_user.first_name}</b>\n\n' , parse_mode='html'\
+    bot_resopnse_on_start = f'<b>Hello, {message.from_user.first_name}</b>\n\n'\
                             f' This bot will show you the Key and the Tempo of almost any song \n' \
                             f" Just send me the name of the song and (preferably) it's perfomer \n\n\n\n" \
                             f'<b>Привет, {message.from_user.first_name}</b>\n\n' \
