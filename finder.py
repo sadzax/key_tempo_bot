@@ -80,8 +80,11 @@ def start(message):
 
 @bot.message_handler()
 def main(message):
+    three_hundred_list = ['триста', '300', '150+150']
     if message.text == 'testme':
         bot.reply_to(message, f'<b>Your Technical Data:</b>\n\n{message}', parse_mode='html')
+    elif message.text.lower() in three_hundred_list:
+        bot.reply_to(message, f'<b>ОТСОСИ У ТРАКТОРИСТА АХАХХААХХАХА))))))</b>')
     else:
         find_this = message.text
         bot.reply_to(message, finder(find_this))
