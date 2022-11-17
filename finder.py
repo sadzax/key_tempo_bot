@@ -29,12 +29,9 @@ def finder(req):
         else:
             i += 1
     
-    try:
-        song_url = song_url[62:]
-        song_url = song_url[:(len(song_url)-2)]
-        song_url = 'https://musicstax.com' + song_url
-    except:
-        answer = f"Sorry, I didn't find any song. Please specify your request"
+    song_url = song_url[62:]
+    song_url = song_url[:(len(song_url)-2)]
+    song_url = 'https://musicstax.com' + song_url
 
     song_response = session.get(song_url).text.splitlines()
 
