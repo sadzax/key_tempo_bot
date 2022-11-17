@@ -16,7 +16,7 @@ def finder(req):
     }
 
     url_req = 'https://musicstax.com/search?q=' + req
-
+    
     session = requests.session()
 
     response = session.get(url_req).text.splitlines() 
@@ -28,7 +28,7 @@ def finder(req):
             break
         else:
             i += 1
-
+            
     song_url = song_url[62:]
     song_url = song_url[:(len(song_url)-2)]
     song_url = 'https://musicstax.com' + song_url
@@ -42,15 +42,27 @@ def finder(req):
             break
         else:
             j += 1
+    
+    def trimmer(dump, phrase, starter, stopper):
+        dump = dump[(dump.find(phrase))+len(phrase):]
+        if starter is None:
+            dump = dump[:dump.find(stopper)]
+        else:
+            dump = dump[(dump.find(starter))+len(starter):dump.find(stopper)]
+        return dump
 
-    key = (info[info.find('data-cy="meta-Key-value">')+25:info.find('data-cy="meta-Key-value">')+25+6])
-    tempo = (info[info.find('data-cy="meta-Tempo-value">')+27:info.find('data-cy="meta-Tempo-value">')+27+3])
-    if key[5:] == "<":
-        key = key[:5]
-    if tempo[2:] == "<":
-        tempo = tempo[:2]
+    key = trimmer(info,'data-cy="meta-Key-value">',None,'</div>')
+    tempo = trimmer(info,'data-cy="meta-Tempo-label">',None,'</div>')
+    song_name = trimmer(info,'data-cy="meta-Name-value">',None,'</div>')
+    artist_name = trimmer(info,'data-cy="meta-Artist(s)-value"><','<u>','</u>')
+    album_name = trimmer(info,'data-cy="meta-Album-value"><','<u>','</u>')
+    release_date = trimmer(info,'data-cy="meta-Release+Date-value">',None,'</div>')
 
-    answer = (f"The Song is probably in \n {key} \n\n Tempo \n {tempo} BPM")
+    answer = (f"I guess you mean <b>{song_name}</b> \n \
+                by <b>{artist_name}</b> \n \
+                from the album {album_name} released {release_date} \n\n \
+                -- -- -- -- -- -- -- -- -- \n\n \
+                Song is probably in \n <b>{key}</b> \n\n Tempo \n <b>{tempo}</b> BPM")
     return answer
 
 tokenTG = io.open('token.txt', mode="r", encoding='utf-8').read()
