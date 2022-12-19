@@ -1,9 +1,8 @@
-# key_tempo_bot
+# Key & Tempo Finder
 
-Finds the Key 🎹 and the Tempo 🥁 of a requested song
+This is a [Telegram bot](https://t.me/key_tempo_bot) who finds the Key 🎹 and the Tempo 🥁 of a requested song
 
-You can try it:
+Direct link:
+[https://t.me/Key_Tempo_Bot](https://t.me/key_tempo_bot)
 
-[t.me/key_tempo_bot](t.me/key_tempo_bot)
-
-Feel free to ask me anything [in telegram](t.me/sadzax) or here 
+Feel free to ask me anything [in telegram](https://t.me/sadzax) or here
