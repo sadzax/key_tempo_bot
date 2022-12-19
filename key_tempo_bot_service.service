@@ -2,7 +2,7 @@
 Description=key_tempo_bot
 
 [Service]
-ExecStart=/usr/bin/python3.9 ~/key_tempo_bot/finder.py
+ExecStart=/usr/bin/python3 ~/key_tempo_bot/finder.py
 Restart=always
 
 [Install]
