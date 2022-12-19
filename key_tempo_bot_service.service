@@ -8,4 +8,4 @@ ExecStart=python3 /home/support/key_tempo_bot/finder.py
 Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
