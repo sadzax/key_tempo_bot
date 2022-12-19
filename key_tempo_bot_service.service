@@ -2,7 +2,6 @@
 Description=key_tempo_bot
 
 [Service]
-User=support
 WorkingDirectory=/home/support/key_tempo_bot
 ExecStart=python3 /home/support/key_tempo_bot/finder.py
 Restart=always
